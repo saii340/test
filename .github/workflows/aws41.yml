@@ -64,7 +64,7 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
     - name: building image
-      run: ddocker build -t testimage .
+      run: docker build -t testimage .
     - name: taging image
       run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
     - name: pushing image

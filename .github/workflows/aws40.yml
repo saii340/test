@@ -63,5 +63,9 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+    - name: building image
+      run: docker build -t sai .
+    - name: taging image
+      run: docker tag sai:latest public.ecr.aws/o7x1t6h0/sai:latest
     - name: pushing image
-      run: docker push 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage
+      run : docker push public.ecr.aws/o7x1t6h0/sai:latest

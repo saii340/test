@@ -2,7 +2,7 @@ name: pushing image
 on: workflow_dispatch
 jobs:
   python:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: mr-smithers-excellent/docker-build-push@v5

@@ -68,4 +68,4 @@ jobs:
     - name: taging image
       run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
     - name: pushing image
-      run : ddocker push 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
+      run : docker push 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest

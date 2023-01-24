@@ -64,9 +64,17 @@ jobs:
 #       id: login-ecr
 #       uses: aws-actions/amazon-ecr-login@v1
     - name: creating directory
-      run: mkdir terraform
+      run: mkdir nice
     - name: building image
-      run: sudo install terraform /terraform
+      run: sudo apt-get install unzip
+    - name: version
+      run : wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+    - name: unzip
+      run: unzip terraform_1.0.7_linux_amd64.zip
+    - name: moving
+      run: sudo mv terraform /nice
+    - name: version 1
+      run: terraform --version
 #     - name: taging image
 #       run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
 #     - name: pushing image

@@ -30,15 +30,15 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
-  ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
+# env:
+#   AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
+#   ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
+#   ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
+#   ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
+#   ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
+#                                                # file, e.g. .aws/task-definition.json
+#   CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
+#                                                # containerDefinitions section of your task definition
 
 permissions:
   contents: read
@@ -46,7 +46,7 @@ permissions:
 jobs:
   deploy:
     name: Deploy
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: production
 
     steps:
@@ -60,12 +60,12 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+#     - name: Login to Amazon ECR
+#       id: login-ecr
+#       uses: aws-actions/amazon-ecr-login@v1
     - name: building image
-      run: docker build -t testimage .
-    - name: taging image
-      run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
-    - name: pushing image
-      run : docker push 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
+      run: sudo install terraform
+#     - name: taging image
+#       run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
+#     - name: pushing image
+#       run : docker push 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest

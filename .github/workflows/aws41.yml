@@ -63,8 +63,10 @@ jobs:
 #     - name: Login to Amazon ECR
 #       id: login-ecr
 #       uses: aws-actions/amazon-ecr-login@v1
+    - name: creating directory
+      run: mkdir sai
     - name: building image
-      run: sudo install terraform
+      run: sudo install terraform /sai
 #     - name: taging image
 #       run: docker tag testimage:latest 989813064368.dkr.ecr.us-west-2.amazonaws.com/testimage:latest
 #     - name: pushing image

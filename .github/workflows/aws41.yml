@@ -74,4 +74,4 @@ jobs:
     - name: running image
       run: docker run 989813064368.dkr.ecr.us-west-1.amazonaws.com/test:latest
     - name: showing a list container
-      run: docker ps
+      run: docker ps -a
